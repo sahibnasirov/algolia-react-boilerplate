@@ -1,0 +1,273 @@
+// ------------------------------------------
+// Search Results Page
+// ------------------------------------------
+@use '../../scss/partials' as *;
+
+// ------------------------------------------
+// Container
+// ------------------------------------------
+.srp {
+  position: relative;
+}
+
+.srp-container {
+  position: relative;
+  width: 95%;
+  height: 100%;
+  margin: 1rem auto;
+  display: flex;
+  gap: 3rem;
+
+  &__facets {
+    width: 18%;
+    will-change: width;
+    flex-shrink: 0;
+    overflow: visible;
+    display: inline-block;
+  }
+
+  &__hits {
+    width: 85%;
+    position: relative;
+    flex-grow: 2;
+    padding: 0 1rem;
+  }
+
+  &__searchInfos{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+
+    p{
+      @include p-text($main-color, 600);
+      font-size: 1.4rem;
+        &:last-child{
+         color: $secondary-color; 
+         text-transform: capitalize
+
+      }
+    }
+  }
+}
+
+.refined-filter {
+  @include btn-hover($secondary-color, $white-color);
+
+  p,
+  span {
+    color: $white-color;
+  }
+}
+
+// ------------------------------------------
+// Stats
+// ------------------------------------------
+
+.srp-container__stats-sort {
+  display: flex;
+  justify-content: space-between;
+
+  .stats-infos {
+    @include stats($secondary-color);
+  }
+
+  select {
+    font-size: 0.9rem;
+    font-family: $main-font;
+  }
+}
+
+// ------------------------------------------
+// Pagination
+// ------------------------------------------
+.ais-Pagination {
+  display: flex;
+  justify-content: center;
+  @include pagination($secondary-color-custom-gradient);
+}
+
+// ------------------------------------------
+// Pagination
+// ------------------------------------------
+.banner-srp {
+  width: 100%;
+  height: 30vh;
+  background-position: center;
+  @include bannerSrp($white-color);
+}
+
+// ------------------------------------------
+// No Results
+// ------------------------------------------
+.no-results {
+  width: 95%;
+  margin: 0rem auto;
+  padding: 2rem 2rem;
+  animation: loading 0.5s forwards ease-in-out;
+
+  &__titles {
+    margin-bottom: 2rem;
+
+    &__span-query {
+      color: $secondary-color;
+      font-weight: 900;
+    }
+  }
+
+  &__infos {
+    &__span {
+      color: $secondary-color;
+    }
+
+    .query-suggestion {
+      margin-top: 2rem;
+
+      .suggestions {
+        &__items {
+          display: flex;
+          flex-direction: column;
+
+          .suggestions__item {
+            margin-right: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+
+            svg {
+              margin-top: 0.2rem;
+              width: 8px;
+            }
+          }
+        }
+      }
+    }
+
+    &__p {
+      @include p-text($main-color);
+      margin-top: 1rem;
+      span {
+        font-weight: 700;
+        color: $secondary-color;
+      }
+    }
+    .recommend {
+      margin: 2rem 0;
+      .auc-Recommend-item {
+        width: 40%;
+      }
+    }
+  }
+}
+
+.srp-hidden {
+  opacity: 1;
+  visibility: hidden;
+}
+
+.srp-active {
+  opacity: 1;
+}
+
+// ------------------------------------------
+// Search box invisible
+// ------------------------------------------
+.search-box-invisible {
+  display: none;
+}
+
+// ------------------------------------------
+// MOBILE
+// ------------------------------------------
+
+.srp-container-mobile,
+.srp-container {
+  position: relative;
+  width: 95%;
+  height: 100%;
+  margin: 1rem auto;
+  display: flex;
+  gap: 3rem;
+
+  &__filterPicto {
+    position: relative;
+    z-index: 901;
+    cursor: pointer;
+    svg {
+      width: 20px;
+      height: auto;
+    }
+    #ball1__wp {
+      transition: all 0.3s ease-in-out;
+    }
+    #ball2__wp {
+      transition: all 0.3s ease-in-out;
+    }
+    #ball3__wp {
+      transition: all 0.3s ease-in-out;
+    }
+  }
+
+  &__filterPicto-active {
+    position: relative;
+    z-index: 901;
+    cursor: pointer;
+    svg {
+      width: 20px;
+      height: auto;
+
+      #ball1__wp {
+        transition: all 0.3s ease-in-out;
+        transform: translateX(10px);
+        path {
+          transition: all 0.3s ease-in-out;
+          fill: $secondary-color;
+        }
+      }
+      #ball2__wp {
+        transition: all 0.3s ease-in-out;
+        transform: translateX(-10px);
+        path {
+          transition: all 0.3s ease-in-out;
+          fill: $secondary-color;
+        }
+      }
+      #ball3__wp {
+        transition: all 0.3s ease-in-out;
+        transform: translateX(10px);
+        path {
+          transition: all 0.3s ease-in-out;
+          fill: $secondary-color;
+        }
+      }
+    }
+  }
+
+  &__facets-mobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    background: $background-color;
+    z-index: 900;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
+  }
+  &__facets-mobile-active {
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(0%);
+  }
+}
+
+
+@keyframes loading {
+  0%{opacity: 0;}
+
+  100%{
+    opacity: 1;
+  }
+}

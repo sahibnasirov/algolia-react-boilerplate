@@ -1,0 +1,45 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+
+node_modules
+package-lock.json
+/pnpm-lock.yaml
+yarn.lock
+.yarn/*
+
+apps/boilerplate-front-end/node_modules
+apps/boilerplate-documentation/node_modules
+
+
+# testing
+/coverage
+
+# production
+build
+dist
+apps/boilerplate-front-end/build
+apps/boilerplate-front-end/dist
+apps/boilerplate-documentation/build
+apps/boilerplate-documentation/dist
+
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# fail to install packages
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# VSCode Config
+/.vscode
+.vscode
+
+# turborepo Config
+.turbo
+node_modules

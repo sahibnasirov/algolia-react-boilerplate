@@ -1,0 +1,372 @@
+// ------------------------------------------
+// PDP
+// ------------------------------------------
+@use '../../../scss/partials' as *;
+
+.pdp {
+  position: relative;
+  height: 100%;
+  &__wrapper {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+  }
+
+  &__left {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .imageWrapper {
+      width: 50%;
+      margin: 0 auto;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+    }
+  }
+  &__backBtn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+      p {
+        transform: translateX(0.1rem);
+        transition: transform 0.3s ease-in-out;
+      }
+      svg {
+        transform: translateX(-0.1rem);
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+
+    p {
+      @include p-text($main-color, 300);
+      font-size: 0.8rem;
+      transition: transform 0.1s ease-in-out;
+    }
+    svg {
+      margin-top: 2px;
+      width: 8px;
+      transition: transform 0.1s ease-in-out;
+      path {
+        fill: $secondary-color;
+      }
+    }
+  }
+  &__right {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__infos {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      gap: 1rem;
+      .brand {
+        @include brand($main-color);
+        font-size: 1.2rem;
+        text-transform: capitalize;
+      }
+      .name {
+        @include productName($grey-dark-color);
+      }
+      .color {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        p {
+          @include colorName($main-color);
+        }
+      }
+      .add-to-cart {
+        @include btn($secondary-color-custom-gradient, $white-color);
+        margin-top: 2rem;
+        gap: 1rem;
+        width: 10rem;
+        &-active {
+          animation: bounce 0.4s ease-in-out forwards;
+        }
+        &:hover {
+          @include btn-hover($secondary-color-custom-gradient, $white-color);
+          gap: 1.5rem;
+        }
+        svg {
+          margin-top: 1px;
+          width: 20px;
+          path {
+            fill: $background-color;
+          }
+        }
+        p {
+          @include p-text($white-color);
+          font-size: 0.8rem;
+        }
+      }
+      .price {
+        @include price($secondary-color);
+        font-size: 2rem;
+        strike {
+          margin-right: 0.5rem;
+          color: $grey-dark-color;
+          text-decoration: line-through;
+        }
+      }
+      .sizes {
+        font-weight: bold;
+        width: 100%;
+        margin-top: 5rem;
+        .sizeList {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          width: 100%;
+          flex-wrap: wrap;
+        }
+        .size {
+          border: 1px solid $grey-dark-color-20;
+          margin-top: 1rem;
+          padding: 0.3rem 1rem;
+          min-width: 20%;
+          flex-wrap: wrap;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.fbt-container {
+  width: 100%;
+  padding: 0 1rem;
+  &__component {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+    overflow: scroll;
+    padding: 1rem 0;
+
+
+  }
+
+  .fbt-component__plus-icon{
+    svg{
+      width: 35px;
+      path{
+        fill: $secondary-color;
+      }
+    }
+  
+
+   
+  }
+
+  .fbt-component:nth-last-child(1) .fbt-component__plus-icon {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.fbt-infos {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    p:nth-child(2){
+      color: $secondary-color;
+      font-weight: 600;
+    }
+  }
+  &__btn {
+    @include btn($secondary-color-custom-gradient, $white-color);
+    margin-top: 2rem;
+    gap: 1rem;
+    width: fit-content;
+    &-active {
+      animation: bounce 0.4s ease-in-out forwards;
+    }
+    &:hover {
+      @include btn-hover($secondary-color-custom-gradient, $white-color);
+      gap: 1.5rem;
+    }
+    svg {
+      margin-top: 1px;
+      width: 20px;
+      path {
+        fill: $background-color;
+      }
+    }
+    p {
+      @include p-text($white-color);
+      font-size: 0.8rem;
+   
+    }
+  }
+}
+
+.fbt-outer-container {
+  padding-top: 5rem;
+}
+
+.fbt-container {
+  display: flex;
+  .uic-HorizontalSlider-container {
+    width: 70%;
+    .uic-HorizontalSlider-list {
+      grid-auto-columns: 28%;
+    }
+  }
+}
+
+
+
+
+// MOBILE & TABLET
+.pdp-mobile {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+
+    .imageWrapper {
+      width: 60%;
+      margin: 1rem auto 0 auto;
+    }
+  }
+  &__backBtn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    p {
+      @include p-text($main-color, 300);
+      font-size: 0.8rem;
+    }
+    svg {
+      margin-top: 2px;
+      width: 8px;
+      transition: transform 0.3s ease-in-out;
+
+      path {
+        fill: $secondary-color;
+      }
+    }
+  }
+  &__left {
+    width: 100%;
+    margin-top: 2rem;
+  }
+  &__right {
+    width: 100%;
+    .pdp__right__infos {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  .auc-Recommend-container {
+    .auc-Recommend-list {
+      display: block;
+      flex-wrap: nowrap;
+      display: -webkit-box;
+      overflow-x: scroll;
+      padding: 1rem 0rem;
+      list-style-type: none;
+      .auc-Recommend-item {
+        width: 40%;
+      }
+    }
+  }
+}
+
+.fbt-container-mobile {
+  display: flex;
+  flex-direction: column;
+  .fbt-infos {
+    margin-top: 1rem;
+    width: 100%;
+    align-items: center;
+  }
+  .fbt-container__component {
+    display: flex;
+    width: 100%;
+    overflow: scroll;
+    padding: 1rem;
+    
+    .fbt-component:nth-last-child(1) .fbt-component__plus-icon {
+      visibility: hidden;
+      opacity: 0;
+    }
+    .fbt-component {
+      display: flex;
+      justify-content: center;
+      min-width: clamp(15rem, 25%, 25%);
+    
+      .fbt-component__plus-icon {
+        margin-top: 1rem;
+        svg{
+          width: 20px;
+          path{
+            fill: $secondary-color;
+          }
+        }
+      }
+    }
+   
+  }
+
+
+}
+
+
+
+//ANIMATION
+@keyframes bounce {
+  0% {
+    transform: scale(0.96);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+
+
+
